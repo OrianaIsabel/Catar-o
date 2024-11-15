@@ -1,9 +1,15 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
-
+describe "Tests calificación de pastelero" {
+	const zoe = new Cocinero(especialidad = new Pastelero(dulzorDeseado = 100))
+	
+	test "Un pastelero califica bien sin pasarse del máximo" {
+		const profiterol = new Postre(colores = 2, cocinero = zoe)
+		assert.equals(6, zoe.catar(profiterol))
+	}
+	
+	test "Un pastelero califica sin pasar del máximo" {
+		const caraotasDulces = new Principal(esBonito = false, azucar = 9999, cocinero = zoe)
+		assert.equals(10, zoe.catar(caraotasDulces))
+	}
 }
